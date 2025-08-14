@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'vazir';
+    src: url(./font/persianfont/vazir-font-v18.0.0/Vazir-Light.woff);
+}

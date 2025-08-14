@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fa" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/input.css">
+    <link rel="stylesheet" href="./src/output.css">
+    <script src="/script.js"></script>
+    <title>tailwind project</title>
+</head>
+<body class="overflow-x-hidden font-vazir antialiased bg-[#0f1e3c] text-[#fafafa]">
+<nav class="container mx-auto p-3 border-b-2 border-white">
+    <div class="flex items-center justify-between my-4">
+        <!-- Logo و نام سایت -->
+        <div class="flex items-center">
+            <img class="w-16 md:w-20 lg:w-24 rounded-2xl" src="./src/image/logo.webp" alt="logo">
+            <span class="tracking-normal pt-2 md:pt-3 pl-2 font-bold text-base md:text-lg lg:text-xl uppercase">Shopping</span>
+        </div>
+        
+        <!-- منوی موبایل -->
+        <button id="mobileMenuBtn" class="md:hidden text-white text-2xl">
+            ☰
+        </button>
+        
+        <!-- منوی دسکتاپ -->
+        <div id="desktopMenu" class="hidden md:flex items-center space-x-2 lg:space-x-5 text-sm lg:text-base gap-2">
+            <a href="#qus" class="px-3 py-2 text-center hover:text-gray-300 transition-colors">سوالات متداول</a>
+            <a href="#Category" class="px-3 py-2 text-center hover:text-gray-300 transition-colors">دسته بندی ها</a>
+            <a href="#product" class="px-3 py-2 text-center hover:text-gray-300 transition-colors">محصولات</a>
+            
+            <!-- دکمه سبد خرید -->
+            <div class="relative">
+                <button onclick="showCart()" class="border-2 border-[#fafafa] px-3 py-2 rounded-lg hover:bg-white hover:text-black transition-colors relative">
+                    🛒 سبد خرید
+                    <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                </button>
+            </div>
+            
+            <!-- دکمه حساب کاربری -->
+            <div class="group">
+                <a href="#" id="accountBtn" onclick="showForm()" class="border-2 border-[#fafafa] px-3 py-2 text-center rounded-lg hover:bg-white hover:text-black relative transition-colors">حساب کاربری</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- منوی موبایل -->
+    <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 border-t border-white/30">
+        <div class="flex flex-col space-y-3 pt-4">
+            <a href="#qus" class="px-3 py-2 text-center hover:text-gray-300 transition-colors">سوالات متداول</a>
+            <a href="#Category" class="px-3 py-2 text-center hover:text-gray-300 transition-colors">دسته بندی ها</a>
+            <a href="#product" class="px-3 py-2 text-center hover:text-gray-300 transition-colors">محصولات</a>
+            
+            <!-- دکمه سبد خرید موبایل -->
+            <div class="relative">
+                <button onclick="showCart()" class="w-full border-2 border-[#fafafa] px-3 py-2 rounded-lg hover:bg-white hover:text-black transition-colors relative">
+                    🛒 سبد خرید
+                    <span id="cartCountMobile" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                </button>
+            </div>
+            
+            <!-- دکمه حساب کاربری موبایل -->
+            <div>
+                <a href="#" onclick="showForm()" class="block w-full border-2 border-[#fafafa] px-3 py-2 text-center rounded-lg hover:bg-white hover:text-black relative transition-colors">حساب کاربری</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="min-h-screen flex items-center">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+            <!-- تصویر -->
+            <div class="w-full lg:w-1/2 order-2 lg:order-1">
+                <img src="./src/image/headphone.jpg" class="w-full max-w-md mx-auto lg:mx-0 rounded-xl shadow-2xl" alt="headphone">
+            </div>
+            
+            <!-- متن -->
+            <div class="w-full lg:w-1/2 order-1 lg:order-2 text-center lg:text-right">
+                <h1 class="text-3xl md:text-3xl lg:text-6xl font-bold mb-6 leading-tight">دنیای موسیقی</h1>
+                <p class="text-base md:text-lg lg:text-xl text-gray-300 mb-8 leading-relaxed">
+                    به دنیای موسیقی خوش آمدید! در این فروشگاه، مجموعه‌ای متنوع از محصولات موسیقی شامل سازهای حرفه‌ای، لوازم جانبی، کتاب‌های آموزشی و فایل‌های صوتی را با بهترین کیفیت فراهم کرده‌ایم.
+                    <br><br>
+                    چه نوازنده‌ای حرفه‌ای باشید یا تازه وارد دنیای موسیقی شده باشید، اینجا جایی است که هر آنچه نیاز دارید را خواهید یافت.
+                    <br><br>
+                    ما با عشق به موسیقی، محصولاتی اصیل و با ضمانت کیفیت ارائه می‌دهیم. با ما همراه شوید و لذت خریدی آسان و مطمئن را تجربه کنید.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
+                    <a href="#" class="px-6 py-3 border-2 border-white rounded-xl hover:bg-white hover:text-black transition-all duration-300 text-center">بررسی و خرید</a>
+                    <a href="#" class="px-6 py-3 border-2 border-white rounded-xl hover:bg-white hover:text-black transition-all duration-300 text-center">مشاهده محصولات</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="product" class="py-16 md:py-24">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">آخرین محصولات</h2>
+            <p class="text-base md:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                جدیدترین محصولات موسیقی رسید. از سازهای روز دنیا تا لوازم جانبی حرفه‌ای، همه را با قیمت ویژه برای شما فراهم کرده‌ایم.
+                <br><br>
+                همین حالا از بخش "محصولات جدید" دیدن کنید و انتخابی متفاوت داشته باشید
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
+                           <!-- کارت گیتار -->
+            <div class="bg-[#1a1c1e] rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                <div class="flex justify-center mb-4">
+                    <img src="./src/image/guitar.webp" alt="guitar" class="w-full max-w-[200px] h-[200px] object-cover rounded-lg">
+                </div>
+                <h5 class="text-sm text-center md:text-2xl font-bold mb-3">گیتار</h5>
+                <div class="flex justify-center items-center gap-2 text-gray-300 mb-6">
+                    <span class="text-lg md:text-xl font-semibold">1,000</span>
+                    <span class="text-base">تومان</span>
+                </div>
+                <button onclick="addToCart('guitar', 'گیتار', 1000, './src/image/guitar.webp')" 
+                        class="w-full py-3 px-4 text-white bg-[#343434] text-base md:text-lg rounded-lg hover:bg-[#555] transition-all duration-300">
+                    افزودن به سبد خرید
+                </button>
+            </div>
+            
+            <!-- کارت پیانو -->
+            <div class="bg-[#1a1c1e] rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                <div class="flex justify-center mb-4">
+                    <img src="./src/image/piano.webp" alt="piano" class="w-full max-w-[200px] h-[200px] object-cover rounded-lg">
+                </div>
+                <h5 class="text-sm text-center md:text-2xl font-bold mb-3">پیانو</h5>
+                <div class="flex justify-center items-center gap-2 text-gray-300 mb-6">
+                    <span class="text-lg md:text-xl font-semibold">15,000</span>
+                    <span class="text-base">تومان</span>
+                </div>
+                <button onclick="addToCart('piano', 'پیانو', 15000, './src/image/piano.webp')" 
+                        class="w-full py-3 px-4 text-white bg-[#343434] text-base md:text-lg rounded-lg hover:bg-[#555] transition-all duration-300">
+                    افزودن به سبد خرید
+                </button>
+            </div>
+            
+            <!-- کارت ویولن -->
+            <div class="bg-[#1a1c1e] rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                <div class="flex justify-center mb-4">
+                    <img src="./src/image/violin.jpg" alt="violin" class="w-full max-w-[200px] h-[200px] object-cover rounded-lg">
+                </div>
+                <h5 class="text-sm text-center md:text-2xl font-bold mb-3">ویولن</h5>
+                <div class="flex justify-center items-center gap-2 text-gray-300 mb-6">
+                    <span class="text-lg md:text-xl font-semibold">2,000</span>
+                    <span class="text-base">تومان</span>
+                </div>
+                <button onclick="addToCart('violin', 'ویولن', 2000, './src/image/violin.jpg')" 
+                        class="w-full py-3 px-4 text-white bg-[#343434] text-base md:text-lg rounded-lg hover:bg-[#555] transition-all duration-300">
+                    افزودن به سبد خرید
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Category" class="py-16 md:py-24">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8">
+        <div class="text-center">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">دسته بندی ها</h2>
+            <p class="text-base md:text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                محصولات ما در دسته‌بندی‌های متنوع برای نیازهای مختلف شما گردآوری شده‌اند.
+                از سازهای کلاسیک و مدرن گرفته تا لوازم جانبی، تجهیزات ضبط، کتاب‌های آموزشی و فایل‌های صوتی.
+                <br><br>
+                با چند کلیک، دقیقاً همان چیزی را پیدا کنید که به دنبالش هستید.
+                جستجو در بین دسته‌ها را شروع کنید و تجربه‌ای سریع و آسان داشته باشید!
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Tabs -->
+            <div class="flex flex-col sm:flex-row justify-center mb-8 gap-4">
+                <div class="tab cursor-pointer" data-target="panel-1">
+                    <div class="py-3 px-6 border-b-4 border-gray-400 hover:border-white transition-colors text-center">
+                        <span class="text-lg font-medium">هدفون</span>
+                    </div>
+                </div>
+                <div class="tab cursor-pointer" data-target="panel-2">
+                    <div class="py-3 px-6 border-b-4 border-gray-400 hover:border-white transition-colors text-center">
+                        <span class="text-lg font-medium">میکروفون</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Panels -->
+            <div id="panels">
+                <div class="panel panel-1">
+                    <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                        <div class="w-full lg:w-1/2">
+                            <img src="./src/image/music.jpg" alt="headphone" class="w-full max-w-md mx-auto rounded-lg shadow-lg">
+                        </div>
+                        <div class="w-full lg:w-1/2 text-center lg:text-right">
+                            <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-6">هدفون حرفه‌ای</h3>
+                            <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-8">
+                                برای راحتی شما، محصولات ما در دسته‌بندی‌های متنوع و منظم قرار گرفته‌اند.
+                                فرقی نمی‌کند به دنبال ساز خاصی باشید یا لوازم جانبی، فایل صوتی یا کتاب آموزشی؛
+                                در این بخش می‌توانید سریع و آسان، محصول مورد نظر خود را پیدا کنید.
+                                روی هر دسته کلیک کنید و دنیای موسیقی دلخواهتان را کشف کنید!
+                            </p>
+                            <a href="#" class="inline-block px-6 py-3 border-2 border-white rounded-lg hover:bg-white hover:text-black transition-all duration-300">
+                                بیشتر
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="qus" class="py-16 md:py-24">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8 text-right">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">سوالات متداول</h2>
+            <p class="text-base md:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                سؤالی دارید؟ ما اینجاییم تا کمک کنیم! در بخش سؤالات متداول، پاسخ‌های کوتاه و کاربردی به رایج‌ترین پرسش‌ها درباره خرید، ارسال، پرداخت و محصولات ما را خواهید یافت.
+                <br><br>
+                این بخش طراحی شده تا تجربه خرید شما سریع‌تر و مطمئن‌تر شود. قبل از تماس با پشتیبانی، نگاهی به پرسش‌های متداول بیندازید. شاید پاسخ سؤال شما همین‌جا باشد!
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 md:py-24">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto">
+            <div class="border border-gray-600 rounded-lg overflow-hidden">
+                <div class="py-4 px-6 border-b border-gray-600 outline-none group cursor-pointer" tabindex="1">
+                    <div class="flex items-center justify-center ">
+                        <h3 class="text-lg md:text-xl font-semibold ">چگونه می‌توانم سفارشم را ثبت کنم؟</h3>
+                        <div class="text-2xl transition-transform duration-300 group-focus:rotate-180">▼</div>
+                    </div>
+                    <div class="overflow-hidden transition-all duration-500 group-focus:max-h-96 max-h-0 ease-in-out">
+                        <div class="py-4 text-gray-300 leading-relaxed">
+                            <p class="mb-4 text-right">
+                                برای ثبت سفارش، کافیست محصول مورد نظر را به سبد خرید اضافه کرده و مراحل پرداخت را تکمیل کنید. 
+                                ثبت‌نام در سایت فرآیند خرید را سریع‌تر می‌کند.
+                            </p>
+                            <p class="mb-4 text-right">
+                                زمان ارسال محصولات معمولاً بین ۲ تا ۵ روز کاری (بسته به شهر مقصد) است و ارسال به سراسر کشور انجام می‌شود.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-[#1b1b1b] py-16 md:py-24">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8">آخرین اخبار سایت</h2>
+            <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+               
+                <button type="submit" 
+                        class="px-8 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors">
+                    ارسال
+                </button>
+                <input type="email" 
+                class="text-right flex-1 px-4 py-3 text-white bg-transparent border-2 border-white rounded-lg placeholder-white/70 focus:outline-none focus:border-gray-300 transition-colors" 
+                placeholder="آدرس ایمیل خود را وارد کنید">
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- سبد خرید -->
+<div id="cartBox" class="w-full fixed top-0 left-0 bottom-0 right-0 bg-black/30 backdrop-blur-sm transition-all duration-300 flex flex-col justify-center items-center opacity-0 invisible z-50">
+    <div class="bg-[#0f1e3c]/90 backdrop-blur-md border-2 border-white w-[95%] md:w-[80%] lg:w-[70%] xl:w-[60%] max-h-[90vh] overflow-y-auto py-6 md:py-10 px-4 md:px-6 rounded-lg relative shadow-2xl">
+        <button id="closeCart" class="absolute top-2 md:top-4 right-2 md:right-4 text-white hover:text-gray-300 text-xl md:text-2xl font-bold transition-colors">&times;</button>
+        <h2 class="text-xl md:text-2xl font-bold text-center mb-4 md:mb-6">سبد خرید</h2>
+        
+        <div id="cartItems" class="space-y-3 md:space-y-4 mb-4 md:mb-6">
+            <!-- آیتم‌های سبد خرید اینجا نمایش داده می‌شوند -->
+        </div>
+        
+        <div class="border-t pt-4">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-base md:text-lg">مجموع:</span>
+                <span id="cartTotal" class="text-lg md:text-xl font-bold">0 تومان</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
+                <button onclick="clearCart()" class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors text-sm md:text-base">خالی کردن سبد</button>
+                <button onclick="checkout()" class="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors text-sm md:text-base">نهایی کردن خرید</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- فرم ثبت نام -->
+<div id="formBox" class="w-full fixed top-0 left-0 bottom-0 right-0 bg-black/30 backdrop-blur-sm transition-all duration-300 flex flex-col justify-center items-center opacity-0 invisible z-50">
+    <div class="bg-[#0f1e3c]/90 backdrop-blur-md border-2 border-white w-[95%] md:w-[80%] lg:w-[60%] xl:w-[50%] max-h-[90vh] overflow-y-auto py-6 md:py-10 px-4 md:px-6 rounded-lg relative shadow-2xl">
+        <button id="closeForm" class="absolute top-2 md:top-4 right-2 md:right-4 text-white hover:text-gray-300 text-xl md:text-2xl font-bold transition-colors">&times;</button>
+        <form class="flex flex-col space-y-4 text-right">
+            <h2 class="text-xl md:text-2xl font-bold text-center" >ثبت نام</h2>
+            <div class="flex flex-col space-y-2">
+                <label for="name" class="text-sm font-medium">نام و نام خانوادگی</label>
+                <input type="text" id="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black bg-white/90 backdrop-blur-sm">
+            </div>
+            <div class="flex flex-col space-y-2">
+                <label for="email" class="text-sm font-medium">ایمیل</label>
+                <input type="email" id="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black bg-white/90 backdrop-blur-sm">
+            </div>
+            <div class="flex flex-col space-y-2">
+                <label for="password" class="text-sm font-medium">رمز عبور</label>
+                <input type="password" id="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black bg-white/90 backdrop-blur-sm">
+            </div>
+            <button type="submit" class="bg-white/90 backdrop-blur-sm text-[#0f1e3c] py-2 px-4 rounded-md hover:bg-white transition-all duration-300 shadow-lg">ثبت نام</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
